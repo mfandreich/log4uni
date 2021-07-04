@@ -6,7 +6,7 @@ git --exec-path
 echo $Env:GIT_EXEC_PATH
 git subtree split --prefix=Build/Release --branch=upm --debug
 echo "Git try get last commit"
-$tagBranchCommit=git log -n 1 upm.. --pretty=format:"%H"
+$tagBranchCommit=git log --max-count=1 --pretty=format:"%H" upm --
 echo "Git subtree commit $($tagBranchCommit)"
 git push -f origin upm
 $existingTag=git tag -l $tagName
