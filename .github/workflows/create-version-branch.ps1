@@ -21,3 +21,5 @@ else
 	git push origin $tagName
 	echo "RELEASE_TAG=$tagName" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
 }
+cd $Env:GIT_EXEC_PATH
+dir
