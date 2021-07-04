@@ -4,7 +4,7 @@ echo "Target version tag name $($tagName)"
 $Env:GIT_EXEC_PATH = git --exec-path
 git --exec-path
 echo $Env:GIT_EXEC_PATH
-git subtree split --prefix=Build/Release --branch=upm --debug
+git subtree split --prefix=Build/Release --branch=upmOlolo --debug
 $tagBranchCommit=git log -n 1 upm --pretty=format:"%H"
 echo "Git subtree commit $($tagBranchCommit)"
 git push -f origin upm
