@@ -1,7 +1,7 @@
 (Get-ChildItem ./Build/Release/log4uni.dll | Select-Object -ExpandProperty VersionInfo | Select-Object FileVersion | Select-Object -ExpandProperty FileVersion) -match "^\d+\.\d+\.\d+"
 $tagName=$matches[0]
 echo "Target version tag name $($tagName)"
-git subtree split -P Build/Release -b upm
+git subtree split -P Build/Release -b upm --debug
 $tagBranchCommit=git log -n 1 upm --pretty=format:"%H"
 echo "Git subtree commit $($tagBranchCommit)"
 git push -f origin upm
