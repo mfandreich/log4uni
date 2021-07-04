@@ -1,6 +1,7 @@
 (Get-ChildItem ./Build/Release/log4uni.dll | Select-Object -ExpandProperty VersionInfo | Select-Object FileVersion | Select-Object -ExpandProperty FileVersion) -match "^\d+\.\d+\.\d+"
 $tagName=$matches[0]
 echo "Target version tag name $($tagName)"
+$Env:GIT_EXEC_PATH = git --exec-path
 git --exec-path
 echo $Env:GIT_EXEC_PATH
 git subtree split --prefix=Build/Release --branch=upm --debug
