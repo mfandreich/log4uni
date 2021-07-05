@@ -11,6 +11,7 @@ on:
     - '**.csproj'
     - '*/package.json'
     - '*/packages.config'
+    - '/.github/workflows/**'
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -48,15 +49,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           message: 'Autobuild commit ${{ steps.time.outputs.time }}'
-        
-      - name: Create release branch
-        run: .github\workflows\create-version-branch.ps1
-        shell: powershell
-        
-      - name: Release
-        if: ${{ env.RELEASE_TAG != 'NON_RELEASE' }}
-        uses: softprops/action-gh-release@v1    
-        with:
-          tag_name: ${{ env.RELEASE_TAG }}   
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
