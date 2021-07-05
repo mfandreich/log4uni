@@ -7,7 +7,7 @@ echo "Git subtree commit $TAG_BRANCH_COMMIT."
 git push -f origin upm > /dev/null
 EXISTING_TAG=$(git tag -l $TAG_NAME)
 echo "Existing version tag name $EXISTING_TAG found."
-if [test -z "$EXISTING_TAG"]
+if [ "$EXISTING_TAG" = "$TAG_NAME" ];
 then
   echo "Create git tag $TAG_NAME on $TAG_NAME $TAG_BRANCH_COMMIT."
   git tag -a $TAG_NAME $TAG_BRANCH_COMMIT -m "version $TAG_NAME tag"  
