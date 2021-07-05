@@ -7,11 +7,12 @@ echo "Git subtree commit $TAG_BRANCH_COMMIT"
 git push -f origin upm
 EXISTING_TAG=$(git tag -l $TAG_NAME)
 echo "Existing version tag name $EXISTING_TAG"
-if [$EXISTING_TAG -eq $TAG_NAME]
+if [$EXISTING_TAG == $TAG_NAME]
 then
   echo "Git tag $TAG_NAME already exists. Skip."
-  echo "RELEASE_TAG=NON_RELEASE" >> $GITHUB_ENV
+  echo "RELEASE_TAG=NOT_RELEASE" >> $GITHUB_ENV
 else
+  echo "Create git tag $TAG_NAME on $TAG_NAME $TAG_BRANCH_COMMIT."
   git tag -a $TAG_NAME $TAG_BRANCH_COMMIT -m "version $TAG_NAME tag"  
   git push origin $TAG_NAME
   echo "RELEASE_TAG=$TAG_NAME" >> $GITHUB_ENV
