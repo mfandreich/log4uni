@@ -59,3 +59,10 @@ jobs:
           chmod +x .github/workflows/release.sh
           .github/workflows/release.sh
         shell: bash
+      - name: Release
+        if: ${{ env.RELEASE_TAG != 'NOT_RELEASE' }}
+        uses: softprops/action-gh-release@v1    
+        with:
+          tag_name: ${{ env.RELEASE_TAG }}   
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
