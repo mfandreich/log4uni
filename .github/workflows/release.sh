@@ -1,4 +1,6 @@
 #!/bin/sh
+git config user.name github-actions
+git config user.email github-actions@github.com
 TAG_NAME=$(strings ./Build/Release/log4uni.dll | egrep '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$' | egrep -o '^[0-9]+\.[0-9]+\.[0-9]+' ) 
 echo "Target version tag name $TAG_NAME found. Create subtree..."
 git subtree split -P Build/Release -b upm >> /dev/null
