@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using UnityEngine.Scripting;
 
 [assembly: Preserve]
-[assembly: AlwaysLinkAssembly] 
+[assembly: AlwaysLinkAssembly]
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
