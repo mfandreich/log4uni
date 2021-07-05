@@ -54,5 +54,7 @@ jobs:
           ref: 'master'
           
       - name: Create release branch
-        run: .github/workflows/release.sh
+        run: |
+          chmod +x .github/workflows/release.sh
+          .github/workflows/release.sh
         shell: bash
